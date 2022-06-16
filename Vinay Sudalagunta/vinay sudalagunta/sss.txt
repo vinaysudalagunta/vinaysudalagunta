@@ -1,0 +1,17 @@
+maven
+
+hibernate
+
+spring core
+
+spring boot
+
+spring  mvc
+
+8080
+
+JBoss
+Glassfish   
+Websphere
+
+
