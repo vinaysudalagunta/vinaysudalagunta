@@ -1,9 +1,14 @@
 package com.zensar.demo.dto;
 
+import javax.persistence.Transient;
+
 public class ProductDto {
 	private int productId;
 	private String productName;
 	private int productCost;
+
+	@Transient
+	private int couponCode;
 
 	public ProductDto() {
 		super();
@@ -14,6 +19,14 @@ public class ProductDto {
 		this.productId = productId;
 		this.productName = productName;
 		this.productCost = productCost;
+	}
+
+	public ProductDto(int productId, String productName, int productCost, int couponCode) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productCost = productCost;
+		this.couponCode = couponCode;
 	}
 
 	public int getProductId() {
@@ -40,10 +53,18 @@ public class ProductDto {
 		this.productCost = productCost;
 	}
 
+	public int getCouponCode() {
+		return couponCode;
+	}
+
+	public void setCouponCode(int couponCode) {
+		this.couponCode = couponCode;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductDto [productId=" + productId + ", productName=" + productName + ", productCost=" + productCost
-				+ "]";
+				+ ", couponCode=" + couponCode + "]";
 	}
 
 }
