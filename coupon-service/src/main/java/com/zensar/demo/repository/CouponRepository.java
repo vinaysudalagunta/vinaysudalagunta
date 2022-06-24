@@ -20,4 +20,6 @@ public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
 	@Query(value = "select * from coupon where coupon_code=?1 or percent_discount=?2", nativeQuery = true)
 	List<Coupon> test2(int couponCode, int percentDiscount);
+	
+	Coupon findByCouponCode(int couponCode);
 }

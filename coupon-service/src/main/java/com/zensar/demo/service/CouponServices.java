@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Sort.Direction;
 
 import com.zensar.demo.dto.CouponDto;
-
+import com.zensar.demo.entity.Coupon;
 
 public interface CouponServices {
 	public CouponDto getCoupon(int couponId);
@@ -27,4 +27,8 @@ public interface CouponServices {
 	List<CouponDto> test2(int couponCode, int percentDiscount);
 	
 	List<CouponDto> getByPercentDiscountGreaterThan(int percentDiscount);
+	
+	CouponDto findByCouponCode(int couponCode);
+	
+	
 }

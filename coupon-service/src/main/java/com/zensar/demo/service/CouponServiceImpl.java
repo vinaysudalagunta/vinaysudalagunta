@@ -115,5 +115,11 @@ public class CouponServiceImpl implements CouponServices {
 		return listOfDto;
 	}
 
+	@Override
+	public CouponDto findByCouponCode(int couponCode) {
+		Coupon coupon = couponRepository.findByCouponCode(couponCode);
+		return modelMapper.map(coupon, CouponDto.class);
+	}
+
 
 }

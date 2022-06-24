@@ -2,7 +2,9 @@ package com.zensar.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 public class Coupon {
