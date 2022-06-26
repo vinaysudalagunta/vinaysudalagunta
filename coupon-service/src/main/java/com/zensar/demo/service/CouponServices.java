@@ -3,9 +3,8 @@ package com.zensar.demo.service;
 import java.util.List;
 
 import org.springframework.data.domain.Sort.Direction;
-
 import com.zensar.demo.dto.CouponDto;
-import com.zensar.demo.entity.Coupon;
+
 
 public interface CouponServices {
 	public CouponDto getCoupon(int couponId);
