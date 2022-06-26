@@ -1,9 +1,7 @@
 package com.zensar.demo.entity;
 
-
-
 public class Coupon {
-	
+
 	private int couponId;
 	private int couponCode;
 	private int percentDiscount;

@@ -1,14 +1,3 @@
-#server.port=9090
-
-#spring.datasource.url= jdbc:mysql://localhost:3306/microservices
-
-#spring.datasource.username=root
-
-#spring.datasource.password=Temp1234
-
-#spring.jpa.hibernate.ddl-auto=create
-
-
 server:
   port: 9090
    
@@ -24,6 +13,8 @@ spring:
    properties:
     hibernate:
      format_sql: true
+  application:
+    name: product-service
     
 management:
   endpoints:
@@ -48,4 +39,9 @@ management:
     env:
       enabled: true
 
-   
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+
+         

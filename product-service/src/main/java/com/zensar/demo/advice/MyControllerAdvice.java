@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.zensar.demo.exception.EmptyProductList;
 import com.zensar.demo.exception.ProductNotFound;
 
-
 @ControllerAdvice
 public class MyControllerAdvice {
 

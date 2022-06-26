@@ -17,7 +17,7 @@ public class Product {
 	private int productId;
 	private String productName;
 	private int productCost;
-	
+
 	@Transient
 	private int couponCode;
 
@@ -31,8 +31,6 @@ public class Product {
 		this.productName = productName;
 		this.productCost = productCost;
 	}
-	
-	
 
 	public Product(int productId, String productName, int productCost, int couponCode) {
 		super();
@@ -66,7 +64,6 @@ public class Product {
 		this.productCost = productCost;
 	}
 
-	
 	public int getCouponCode() {
 		return couponCode;
 	}
@@ -80,7 +77,5 @@ public class Product {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productCost=" + productCost
 				+ ", couponCode=" + couponCode + "]";
 	}
-
-	
 
 }
