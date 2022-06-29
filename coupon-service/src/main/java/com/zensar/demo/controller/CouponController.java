@@ -112,6 +112,8 @@ public class CouponController {
 
 	@GetMapping("/coupon/couponCode/{couponCode}")
 	public ResponseEntity<CouponDto> findByCouponCode(@PathVariable("couponCode")int couponCode) {
+		
+		//System.out.println("Instance 2");
 		return new ResponseEntity<CouponDto>(couponServices.findByCouponCode(couponCode), HttpStatus.OK);
 	}
 
