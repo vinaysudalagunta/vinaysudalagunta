@@ -15,6 +15,9 @@ spring:
      format_sql: true
   application:
     name: product-service
+  config:
+    import:
+    - optional:configserver:http://localhost:8888/
     
 management:
   endpoints:
@@ -41,7 +44,16 @@ management:
 
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: true
 
-         
+  instance:
+    prefer-ip-address: true
+    
+resilience4j:
+  retry:
+    instances:
+      productapi:
+       max-attempts: 3
+       wait-duration: 20s
+          

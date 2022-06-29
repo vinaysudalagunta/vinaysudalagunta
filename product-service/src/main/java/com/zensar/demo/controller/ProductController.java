@@ -21,9 +21,11 @@ import com.google.inject.spi.Message;
 import com.zensar.demo.dto.CouponDto;
 import com.zensar.demo.dto.ProductDto;
 import com.zensar.demo.entity.Coupon;
+import com.zensar.demo.entity.Product;
 import com.zensar.demo.restclient.CouponRestClient;
 import com.zensar.demo.service.ProductServices;
 
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -69,8 +71,9 @@ public class ProductController {
 
 	@Operation(summary = "Insert Product")
 	@PostMapping(value = "/products")
-	public ResponseEntity<ProductDto> insertProduct(@RequestBody ProductDto productDto) {
-		try {
+	@Retry(name = "productapi", fallbackMethod = "myFallBackMethod")
+	public ProductDto insertProduct(@RequestBody ProductDto productDto) {
+		
 			//ResponseEntity<CouponDto> responseEntity = restTemplate.getForEntity( "http://COUPON-SERVICE/coupon-api/coupon/couponCode/" + productDto.getCouponCode(), CouponDto.class);
 			//int percentDiscount = responseEntity.getBody().getPercentDiscount();
 			
@@ -78,14 +81,15 @@ public class ProductController {
 			int percentDiscount = coupon.getPercentDiscount();
 			
 			productDto.setProductCost(productDto.getProductCost() * (100 - percentDiscount) / 100);
-		} catch (Exception exception) {
-			System.out.println(exception.getMessage());
-		}
 
 		// int couponId = responseEntity.getBody().getCouponId();
 		// restTemplate.delete("http://COUPON-SERVICE/coupon-api/coupon/" + couponId);
 
-		return new ResponseEntity<ProductDto>(productServices.insertProduct(productDto), HttpStatus.CREATED);
+		return productServices.insertProduct(productDto);
+	}
+	
+	public ProductDto myFallBackMethod(Throwable t) {
+		return new ProductDto();
 	}
 
 	@Operation(summary = "Update Product")

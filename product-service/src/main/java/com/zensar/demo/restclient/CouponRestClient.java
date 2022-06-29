@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.zensar.demo.entity.Coupon;
 
-@FeignClient("COUPON-SERVICE")
+@FeignClient("GATEWAY-SERVER")
 public interface CouponRestClient {
 
 	
